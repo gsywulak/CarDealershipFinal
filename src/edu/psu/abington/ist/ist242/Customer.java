@@ -70,11 +70,4 @@ public class Customer {
         int input = scnr.nextInt();
         return input;
     }
-
-    /*public void printCustomers() {
-        getCustomerId();
-        getCustomerName();
-        getCustAddress();
-        getCustomerPhone();
-    }*/
 }

@@ -85,11 +85,12 @@ public class Main {
                 case INV_CODE: //Inventory Page
                     Scanner input2 = new Scanner(System.in);
                     String answer = "";
-                    System.out.print("What would you like to do: [A]dd in inventory, [B]rowse Inventory, [D]elete an item from Inventory: ");
+                    System.out.print("\nWhat would you like to do: \n[A]dd in inventory\n[B]rowse Inventory\n[D]elete an item from Inventory\nPlease Enter you Selection: ");
                     answer = input2.nextLine().toUpperCase() + " ";
                     char firstChar = answer.charAt(0);
                     switch(firstChar){
                         case 'A':
+                            System.out.println("\nPlease Add Car Information Below");
                             iList.add(inv.addInventory());
                             break;
                         case 'B':
