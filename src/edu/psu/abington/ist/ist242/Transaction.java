@@ -3,8 +3,8 @@ Project: Car Dealership
 Purpose Details:
 Course: IST 242
 Team: 4
-Date Developed: 4/19/2020
-Last Date Changed: 4/19/2020
+Date Developed:
+Last Date Changed:
 Rev: 1
 */
 
