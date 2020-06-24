@@ -64,7 +64,6 @@ public class Main {
         //final char SALES_CODE = '4'; //sales person
         final char ORDER_CODE = '4'; //order page
         final char TRANS_CODE = '5'; //transaction page
-        final char HELP_CODE = '?';
         final char EXIT_CODE = 'E';
         char userAction;
 
