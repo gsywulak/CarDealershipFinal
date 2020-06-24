@@ -17,13 +17,14 @@ public class Customer {
 
     // ADD A NEW CUSTOMER METHOD --------------------------------------------------------------------------------------------------------------------------------------------------
     public Customer addCustomer() {
+        System.out.println("\nPlease Add Customer Information Below: ");
         Customer cust = new Customer(cCount++);
         Scanner scnr = new Scanner(System.in);
-        System.out.println("Please Enter your Name: ");
+        System.out.print("Please Enter your Name: ");
         cust.setCustomerName(scnr.nextLine());
-        System.out.println("Please Enter your Address: ");
+        System.out.print("Please Enter your Address: ");
         cust.setCustAddress(scnr.nextLine());
-        System.out.println("Please Enter your Phone: ");
+        System.out.print("Please Enter your Phone: ");
         cust.setCustomerPhone(scnr.nextLine());
         cust.setCustomerId(cCount);
         return cust;
@@ -31,7 +32,7 @@ public class Customer {
     // PRINT CUSTOMERS METHOD --------------------------------------------------------------------------------------------------------------------------------------------------
     public static void printCustomer(ArrayList<Customer> cList){
         for (Customer cust: cList){
-            System.out.printf("%-10s | %-12s | %-10s\n", cust.getCustomerId(), cust.getCustomerName(), cust.getCustomerPhone());
+            System.out.printf("%-15s | %-15s | %-15s | %-15s\n", cust.getCustomerId(), cust.getCustomerName(), cust.getCustomerPhone(), cust.getCustAddress());
         }
     }
     // CUSTOMER CONSTRUCTOR --------------------------------------------------------------------------------------------------------------------------------------------------
