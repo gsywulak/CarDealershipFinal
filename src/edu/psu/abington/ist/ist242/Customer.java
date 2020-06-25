@@ -1,5 +1,5 @@
 /*
-Project: Lab 9
+Project: Car Dealership
 Purpose Details: Car dealership
 Course: IST 242
 Author:
