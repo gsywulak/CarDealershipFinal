@@ -39,8 +39,6 @@ public class Inventory {
     public Inventory() {
 
     }
-
-
     // SETTERS AND GETTERS --------------------------------------------------------------------------------------------------------------------------------------------------------------
     public int getCarID() {
         return carID;
@@ -151,14 +149,12 @@ public class Inventory {
 
     public static void removeCar(ArrayList<Inventory> invList) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter a Vin number to delete the Car: ");
+        System.out.print("Please enter a Vin number to delete the Car: ");
         String vin = input.nextLine();
 
         for (Inventory inv : invList) {
-            if (vin == inv.getVin()) {
-                invList.remove(vin);
-                break;
-            }
+            invList.remove(vin);
+            break;
         }
     }
 

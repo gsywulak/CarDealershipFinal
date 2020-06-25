@@ -137,7 +137,7 @@ public class Main {
                         Scanner input = new Scanner(System.in);
                         Inventory.listMenu(invList);
                         System.out.println(" ");
-                        System.out.println("Enter Car ID: ");
+                        System.out.print("Enter Car ID: ");
                         int menuId = input.nextInt();
 
                         oList.add(or.order());
