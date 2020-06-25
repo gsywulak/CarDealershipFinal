@@ -7,13 +7,10 @@ Developed: June 14, 2020
 Last date Changed: June 21, 2020
 Rev: 1
 */
-
-
-
+//hello
 package edu.psu.abington.ist.ist242;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -67,12 +64,11 @@ public class Main {
         //final char SALES_CODE = '4'; //sales person
         final char ORDER_CODE = '4'; //order page
         final char TRANS_CODE = '5'; //transaction page
-        final char HELP_CODE = '?';
         final char EXIT_CODE = 'E';
         char userAction;
 
 
-        final String PROMPT_ACTION = "\nMAIN MENU: \n1 - Add Customer\n2 - Print Customers\n3 - Inventory Page\n4 - Sell Car\n5 - Transaction Page\nE - Exit\n ";
+        final String PROMPT_ACTION = "\nMAIN MENU: \n1 - Add Customer\n2 - Print Customers\n3 - Inventory Page\n4 - Sell Car\n5 - Transaction Page\nE - Exit\nPlease Enter your Selection: ";
 
         userAction = getAction(PROMPT_ACTION);
 
@@ -80,20 +76,20 @@ public class Main {
             switch (userAction) {
                 case CUST_CODE: // Customers page
                     cList.add(cust.addCustomer());
-                    System.out.println(" ");
                     break;
                 case PRINT_CUST:
-                    System.out.printf("%-12s | %-20s | %-20s | %-20s\n", "ID", "Name", "Phone Number", "Address");
+                    System.out.printf("%-15s | %-15s | %-15s | %-15s\n", "ID", "Name", "Phone Number", "Address");
                     Customer.printCustomer(cList);
                     break;
                 case INV_CODE: //Inventory Page
                     Scanner input2 = new Scanner(System.in);
                     String answer = "";
-                    System.out.print("What would you like to do: [A]dd in inventory, [B]rowse Inventory, [D]elete an item from Inventory: ");
+                    System.out.print("\nWhat would you like to do: \n[A]dd in inventory\n[B]rowse Inventory\n[D]elete an item from Inventory\nPlease Enter you Selection: ");
                     answer = input2.nextLine().toUpperCase() + " ";
                     char firstChar = answer.charAt(0);
                     switch(firstChar){
                         case 'A':
+                            System.out.println("\nPlease Add Car Information Below");
                             iList.add(inv.addInventory());
                             break;
                         case 'B':
@@ -107,26 +103,11 @@ public class Main {
                             break;
                     }
                     break;
-                    /*System.out.println("------------------------");
-                    System.out.println("       Inventory        ");
-                    System.out.println("------------------------");
-                    inv1.printMenuInfo();
-                    inv2.printMenuInfo();
-                    inv3.printMenuInfo();
-                    inv4.printMenuInfo();
-                    break;*/
                 case ORDER_CODE: //Order Page
                     // add loop to prompt user to order more items
                     String userInput = "Type 'Y'es to sell a car or type 'N'o to go back to the main menu: "; //TODO: change the naming of this line
                     userAction = getAction(userInput);
                     while (userAction != 'N') {
-                        //oList.add(main.addOrder());
-
-                        /*Order o1 = new Order();
-                        o1.getorderId();
-                        oList.add(main.addOrder());
-                        */
-
                         System.out.println("-------------------------------------------------------------------------");
                         System.out.println("                            ORDER - INVENTORY                            ");
                         System.out.println("-------------------------------------------------------------------------");
@@ -138,17 +119,9 @@ public class Main {
                         inv3.printMenuInfo();
                         inv4.printMenuInfo();
 
-
-                        //using order() method
-                        //or.order();
-
-
                         System.out.println(" ");
                         System.out.println("Enter Car ID: ");
                         int menuId = input.nextInt();
-                        /*System.out.println("Enter quantity: ");
-                        int qty = or.getQuantity();
-                        or.setQuantity(qty);*/
 
                         oList.add(or.order());
 
@@ -224,8 +197,6 @@ public class Main {
                     trans1.listTransactions(tList);*/
 
                     break;
-                case HELP_CODE: //
-                    break;
             }
             userAction = getAction(PROMPT_ACTION);
         }
@@ -235,116 +206,9 @@ public class Main {
     public static char getAction(String prompt) {
         Scanner scnr = new Scanner(System.in);
         String answer = "";
-        System.out.println(prompt);
+        System.out.print(prompt);
         answer = scnr.nextLine().toUpperCase() + " ";
         char firstChar = answer.charAt(0);
         return firstChar;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        boolean exit;
-
-
-        public void runDealership() {
-            while(!exit){
-                printMenu();
-                int choice = getInput();
-                performAction(choice);
-            }
-        }
-
-
-        public int getInput() {
-            Scanner menuInput = new Scanner(System.in);
-            int choice = -1;
-            while (choice < 0 || choice > 5) {
-                try {
-                    System.out.print("\nPlease enter your selection: ");
-                    choice = Integer.parseInt(menuInput.nextLine());
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid selection. Please try again.");
-                }
-            }
-            return choice;
-        }
-        private void performAction(int choice){
-            switch (choice) {
-                case 0:
-                    exit = true;
-                    System.out.println("Thank you for visiting!");
-                    break;
-                case 1:
-                    String answer;
-                    Scanner input = new Scanner(System.in);
-                    System.out.print("Create Customer, Read Customers, Delete Customer: ");
-                    answer = input.nextLine();
-                    switch (answer) {
-                        case "create":
-                            Customer.addCustomer();
-                            break;
-                        case "read":
-                            //User.customerRecord(cList);
-                            break;
-                        default:
-                            System.out.println("Invalid please, retry");
-                            break;
-                    }
-
-
-                case 2:
-                    Inventory.displayCars();
-                    break;
-                case 3:
-                    //salesPerson sales = new salesPerson();
-                    //sales.salesPersonsRecord();//(salespersonArray);
-                    break;
-                case 4:
-                    //Order order = new Order();
-                    //order.orderRecords();///*orderArray,transactionArray, custArray*);
-                    break;
-                case 5:
-                    //Transaction transaction = new Transaction();
-                    //transaction.transactionRecords(/*transactionArray*///);
-//break;
-//default:
-//System.out.println("An unknown error has occurred. ");
-//break;
-//}
-//}
-
-
-
-
-
-
-
-
-
-        /*Dealership dealership = new Dealership();//creates the dealership class and calls it to run
-        dealership.runDealership();*/
-

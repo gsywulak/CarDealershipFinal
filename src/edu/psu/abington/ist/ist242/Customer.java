@@ -122,11 +122,5 @@ public class Customer {
     }
 
 
-    /*public void printCustomers() {
-        getCustomerId();
-        getCustomerName();
-        getCustAddress();
-        getCustomerPhone();
-
-    }*/
+    
 }

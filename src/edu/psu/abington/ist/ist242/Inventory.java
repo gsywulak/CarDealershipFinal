@@ -117,15 +117,15 @@ public class Inventory {
     public Inventory addInventory() {
         Inventory invt = new Inventory();
         Scanner input = new Scanner(System.in);
-        System.out.print("Please Enter a Vin Number: ");
+        System.out.print("Enter a Vin Number: ");
         invt.setVin(input.nextLine());
-        System.out.print("Please Enter the Make of Car: ");
+        System.out.print("Enter the Make of Car: ");
         invt.setMake(input.nextLine());
-        System.out.print("Please Enter the Model of Car: ");
+        System.out.print("Enter the Model of Car: ");
         invt.setModel(input.nextLine());
-        System.out.print("Please Enter the year of Car: ");
+        System.out.print("Enter the year of Car: ");
         invt.setYear(input.nextLine());
-        System.out.print("Please Enter the price of Car: ");
+        System.out.print("Enter the price of Car: ");
         invt.setPrice(input.nextDouble());
         return invt;
     }
@@ -142,25 +142,6 @@ public class Inventory {
             }
         }
     }
-
-    /*public Boolean deleteCar(String vin) {
-        System.out.println("Enter VIN to delete:");
-        Scanner input = new Scanner(System.in);
-        input.nextLine();
-        try {
-            for (Vehicle c : carsList1) {
-                if (c.vin.equals(vin)) {
-                    carsList1.remove(c);
-                    System.out.println("Car with VIN: " + vin + " removed!");
-                    break;
-                }
-            }
-        } catch (java.lang.Exception e){
-            System.out.println(e.getMessage());
-            return false;
-        }
-        return true;
-    }*/
 
     @Override
     public String toString() {
