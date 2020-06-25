@@ -25,16 +25,17 @@ public class Customer {
         Customer cust = new Customer(cCount++);
         Scanner scnr = new Scanner(System.in);
 
-        System.out.println("Please enter customer name: ");
+        System.out.println("\nPlease Enter Customer Details below: ");
+        System.out.print("Please Enter Customer Name: ");
         custName = (Exception.testAlpha(Exception.getInput()));
         cust.setCustomerName(custName);
 
         //cust.setCustomerName(scnr.nextLine());
 
-        System.out.println("Please enter customer Address: ");
+        System.out.print("Please Enter Customer Address: ");
         cust.setCustAddress(scnr.nextLine());
 
-        System.out.println("Please enter customer phone number, please use this format (012) 345-6789: ");
+        System.out.print("Please Enter Customer Phone number, please use this format (012) 345-6789: ");
         custPhone = (Exception.testPhone(Exception.getInput()));
         cust.setCustomerPhone(custPhone);
 
@@ -48,7 +49,7 @@ public class Customer {
     // PRINT CUSTOMERS METHOD --------------------------------------------------------------------------------------------------------------------------------------------------
     public static void printCustomer(ArrayList<Customer> cList) {
         for (Customer cust : cList) {
-            System.out.printf("%-12s | %-20s | %-20s | %-20s\n", cust.getCustomerId(), cust.getCustomerName(), cust.getCustomerPhone(), cust.getCustAddress());
+            System.out.printf("%-15s | %-15s | %-15s | %-15s\n", cust.getCustomerId(), cust.getCustomerName(), cust.getCustomerPhone(), cust.getCustAddress());
         }
     }
 

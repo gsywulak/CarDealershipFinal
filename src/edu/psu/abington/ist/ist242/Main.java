@@ -120,7 +120,7 @@ public class Main {
                         inv4.printMenuInfo();
 
                         System.out.println(" ");
-                        System.out.println("Enter Car ID: ");
+                        System.out.print("Enter Car ID: ");
                         int menuId = input.nextInt();
 
                         oList.add(or.order());

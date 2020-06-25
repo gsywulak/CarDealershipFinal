@@ -111,32 +111,32 @@ public class Transaction extends Order {
         Customer cust = new Customer(); //Customer constructor
         Inventory car = new Inventory(); //Car constructor
 
-        System.out.println("Enter transaction ID: ");
+        System.out.print("Enter transaction ID: ");
         transactionId = Exception.testAlphaNumeric(Exception.getInput());
         tran.setTransactionId(transactionId);
         sList.add(tran);
 
-        System.out.println("Please enter employee ID: ");
+        System.out.print("Please enter employee ID: ");
         empSalesID = Exception.testAlphaNumeric(Exception.getInput());
         salesManager.setUserId(empSalesID);
 
-        System.out.println("Please enter employee name: ");
+        System.out.print("Please enter employee name: ");
         sfullName = Exception.testAlpha(Exception.getInput());
         salesManager.setUserName(sfullName);
 
 
-        System.out.println("Enter the VIN of the Car: ");
+        System.out.print("Enter the VIN of the Car: ");
         car.vin = Exception.testAlphaNumeric(Exception.getInput());
         car.setVin(car.vin);
 
 
-        System.out.println("Enter the sticker price of car as a double: "); //TODO: change this into the Order selection
+        System.out.print("Enter the sticker price of car as a double: "); //TODO: change this into the Order selection
         double subTotal = scnr.nextDouble();
         tran.setSubTotal(subTotal);
         sList.add(tran);
 
 
-        System.out.println("Enter customer full name: ");
+        System.out.print("Enter customer full name: ");
         cust.custName = Exception.testAlpha(Exception.getInput());
         cust.setCustomerName(cust.custName);
 
