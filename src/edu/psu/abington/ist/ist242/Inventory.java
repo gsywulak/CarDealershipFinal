@@ -1,12 +1,12 @@
 /*
-Project: Car Dealership
+Project: car dealership
 Purpose Details:
 Course: IST 242
-Team: 4
+Author:
 Date Developed:
 Last Date Changed:
-Rev: 1
-*/
+Rev:
+ */
 
 package edu.psu.abington.ist.ist242;
 
@@ -15,8 +15,11 @@ import java.util.*;
 public class Inventory {
 
     //Class Level Variables - Protect the data
+    int iCount = 101;
+    ArrayList<Inventory> invList;
+
+    public int carID;
     public String vin;
-    public ArrayList invList;
     public double price;
     public String year;
     public String make;
@@ -24,9 +27,10 @@ public class Inventory {
 
 
     //Constructor Method
-    public Inventory(String _vin, String _year, String _make, String _model, double _price) {
+    public Inventory(int _iCount, String _vin, String _year, String _make, String _model, double _price) {
+        this.iCount = _iCount;
         this.vin = _vin;
-        this.make = _make; // menuItem OR _menuItem
+        this.make = _make;
         this.year = _year;
         this.model = _model;
         this.price = _price;
@@ -38,6 +42,14 @@ public class Inventory {
 
 
     // SETTERS AND GETTERS --------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public int getCarID() {
+        return carID;
+    }
+
+    public void setCarID(int carID) {
+        this.carID = carID;
+    }
+
     public String getVin() {
         return vin;
     }
@@ -63,7 +75,6 @@ public class Inventory {
     public void setPrice(double price) {
         this.price = price;
     }
-
     public double getPrice(String _vin) {
         this.vin = _vin;
         return price;
@@ -107,28 +118,36 @@ public class Inventory {
         }
     }
 
-    public Inventory printMenuInfo() {
-        //System.out.print("-------------------------\n");​
-        System.out.printf("%-12s | %-12s | %-12s | %-20s | %-12s\n", vin, year, make, model, "$" + price);
-        return null;
-
-    }
 
     public Inventory addInventory() {
-        Inventory invt = new Inventory();
+        invList = new ArrayList<Inventory>();
+        Inventory invt = new Inventory(iCount, vin, year, make, model, price);
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter a Vin Number: ");
-        invt.setVin(input.nextLine());
-        System.out.print("Enter the Make of Car: ");
-        invt.setMake(input.nextLine());
-        System.out.print("Enter the Model of Car: ");
-        invt.setModel(input.nextLine());
-        System.out.print("Enter the year of Car: ");
+
+        invt.setCarID(iCount++);
+
+        System.out.print("Please Enter a Vin Number: ");
+        vin = (Exception.testAlphaNumeric(Exception.getInput()));
+        invt.setVin(vin);
+
+        System.out.print("Please Enter the year of Car: ");
         invt.setYear(input.nextLine());
-        System.out.print("Enter the price of Car: ");
+
+        System.out.print("Please Enter the Make of Car: ");
+        make = (Exception.testAlpha(Exception.getInput()));
+        invt.setMake(make);
+
+        System.out.print("Please Enter the Model of Car: ");
+        model = (Exception.testAlpha(Exception.getInput()));
+        invt.setModel(model);
+
+        System.out.print("Please Enter the price of Car: ");
         invt.setPrice(input.nextDouble());
+
+        invList.add(invt);
         return invt;
     }
+
 
     public static void removeCar(ArrayList<Inventory> invList) {
         Scanner input = new Scanner(System.in);
@@ -145,6 +164,6 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return String.format("%-12s | %-12s | %-12s | %-20s | %-12s", vin, year, make, model, "$" + price);
+        return String.format("%-12s |%-12s | %-12s | %-12s | %-20s | %-12s", iCount, vin, year, make, model, "$" + price);
     }
 }

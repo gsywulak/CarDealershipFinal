@@ -1,10 +1,10 @@
 /*
-Project: Car Dealership
-Purpose Details:
+Project: Car Design
+Purpose Details: Car Dealership Application
 Course: IST 242
-Team: 4
-Date Developed:
-Last Date Changed:
+Team 4
+Developed: June 14, 2020
+Last date Changed: June 21, 2020
 Rev: 1
 */
 
@@ -17,7 +17,7 @@ enum PaymentType {credit, cash, financing}
 
 public class Transaction extends Order {
 
-    ArrayList<Transaction> sList = new ArrayList<Transaction>();
+    ArrayList<Transaction> tList = new ArrayList<Transaction>();
 
     int sCount = 1;
     private PaymentType paymentType;
@@ -91,56 +91,49 @@ public class Transaction extends Order {
         this.sfullName = sfullName;
     }
 
-    /*public String getOrderTotal (Order order) {
-        Transaction transaction = new Transaction();
-
-        return "Total: $ ";
-    }
-
-
-    public String getTotal (Order order) {
-        Transaction transaction = new Transaction();
-        transaction.setPaymentType();
-        return "Total: $ ";
-    }*/
 
     public Transaction sellCar(){
         Scanner scnr = new Scanner(System.in);
         User salesManager = new User(); // Sales Manager constructor
         Transaction tran = new Transaction(); //Sales transaction constructor
         Customer cust = new Customer(); //Customer constructor
+        Order order = new Order();
+        ArrayList<Order> oList = new ArrayList<Order>();
         Inventory car = new Inventory(); //Car constructor
 
         System.out.println("Enter transaction ID: ");
         transactionId = Exception.testAlphaNumeric(Exception.getInput());
         tran.setTransactionId(transactionId);
-        sList.add(tran);
 
         System.out.println("Please enter employee ID: ");
         empSalesID = Exception.testAlphaNumeric(Exception.getInput());
         salesManager.setUserId(empSalesID);
 
-        System.out.println("Please enter employee name: ");
-        sfullName = Exception.testAlpha(Exception.getInput());
-        salesManager.setUserName(sfullName);
 
+        System.out.println("Please enter employee name: ");
+        salesManager.getUserName();
+        sfullName = Exception.testAlpha(Exception.getInput());
+        salesManager.setUserType(userType.SalesPerson);
+        salesManager.setUserName(sfullName);
 
         System.out.println("Enter the VIN of the Car: ");
         car.vin = Exception.testAlphaNumeric(Exception.getInput());
         car.setVin(car.vin);
 
-
-        System.out.println("Enter the sticker price of car as a double: "); //TODO: change this into the Order selection
+        //TODO: change this into the Order selection
+        System.out.println("Enter price as double: ");
         double subTotal = scnr.nextDouble();
         tran.setSubTotal(subTotal);
-        sList.add(tran);
 
-
-        System.out.println("Enter customer full name: ");
+        // TO GET CUSTOMER NAME INPUT AND PRINT TO THE TRANSACTION RECORD
+        System.out.println("Customer Name: ");
+        cust.getCustomerName();
         cust.custName = Exception.testAlpha(Exception.getInput());
         cust.setCustomerName(cust.custName);
 
         tran.setPaymentType();
+
+        tList.add(tran);
 
 
         System.out.println(" ");
@@ -151,11 +144,14 @@ public class Transaction extends Order {
         System.out.println("     -- SALE RECORD --      ");
         System.out.println(" ");
         System.out.println("Transaction ID: " + tran.getTransactionId());
-        System.out.println("Sold To: " + cust.getCustomerName());
+        System.out.println("Sold To: " + cust.getCustomerName()); //TO GET CUSTOMER NAME INPUT AND PRINT TO THE TRANSACTION RECORD
         System.out.println("Employee ID #: " + salesManager.getUserId());
         System.out.println("Employee Name: " + salesManager.getUserName());
         System.out.println("Car VIN: " + car.getVin());
         System.out.println("Car Sticker Price: " + tran.getSubTotal());
+
+
+        //System.out.println("Payment Type: " + this.paymentType);
         //System.out.println("Payment Type: " + PaymentType.cash); //TODO: need to change this to reflect user input from above
 
         System.out.println(" ");
@@ -166,7 +162,7 @@ public class Transaction extends Order {
         System.out.println(" ");
         System.out.println("-- TRANSACTION RECORDED -- ");
 
-        sList.add(tran);
+        tList.add(tran);
 
         return tran;
     }
@@ -177,6 +173,7 @@ public class Transaction extends Order {
         PaymentType _payment = PaymentType.valueOf(scanner.next().toLowerCase());
         return _payment;
     }
+
 
     public double setSalesCommission(double _value) {
         double comm = _value*0.15;
@@ -203,122 +200,3 @@ public class Transaction extends Order {
         return totalPrice;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*public class Transaction {
-
-    //Class Level Variables - Protect the data
-    private int transactionId;
-    private Order order;
-    private PaymentType payment;
-    private final double tax = 0.06;
-
-    //Constructor Method
-    public Transaction(){}
-
-    public Transaction(int _transactionId, Order _order, PaymentType _pType){
-        this.transactionId = _transactionId;
-        this.order = _order;
-        this.payment = _pType;
-    }
-
-    public Transaction(int _transactionId) {
-        this.transactionId = _transactionId;
-    }
-
-
-    // get order total ??
-    public String getOrderTotal (Order order) {
-        Transaction transaction = new Transaction();
-
-        return "Total: $ ";
-    }
-
-/*
-    public String getTotal (Order order) {
-        Transaction transaction = new Transaction();
-        transaction.setPaymentType();
-        return "Total: $ ";
-    }
-    */
-
-//Setters and Getters
-   /* public int getTransactionId() { return transactionId; }
-    public void setTransactionId(int _transactionId) {this.transactionId = _transactionId;}
-
-    public PaymentType selectPayType() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter payment type: ");
-        payment = PaymentType.valueOf(input.next().toLowerCase());
-        // add if statement for cash payment to calculate change
-        return payment;
-    }
-
-    public static void listTransactions(ArrayList<Transaction> tList){
-        for (Transaction trans: tList){
-            System.out.println("Transaction ID: " + trans.getTransactionId());
-            //System.out.println("Order:" + trans.getOrder());
-            System.out.println("Payment Type: " + trans.getPaymentType());
-        }
-    }
-    public Order getOrder() { return order; }
-    public void setOrder(Order _order) {this.order = _order;}
-
-    public PaymentType getPaymentType() { return payment; }
-    public void setPaymentType(PaymentType _payment) {this.payment = _payment;}
-
-    public void printReceipt(double _total, PaymentType _payment) {
-
-        System.out.println("Customer Name:");
-        System.out.printf("%-10s _ %-10s", "Order         ", "$ ");
-        System.out.printf("%.2f\n", _total);
-
-        double total = _total + _total*tax;
-
-        System.out.printf("%-10s _ %-10s", "Tax           ", "$ ");
-
-        System.out.print(" ");
-
-        System.out.printf("%.2f\n", tax*_total);
-
-        System.out.printf("%-10s _ %-10s", "Total w/ tax  ", "$    ");
-
-        System.out.printf("%.2f\n", total);
-
-        //System.out.printf("%-10s _ %-10s\n", "Payment type  ", "    ", _payment);
-
-    }*/
-
-    /*public PaymentType getPaymentType() { return PaymentType; }
-    public void setPaymentType(PaymentType _paymentType) {PaymentType = _paymentType;}
-
-}*/

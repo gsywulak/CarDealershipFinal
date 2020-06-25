@@ -57,16 +57,6 @@ public class Order {
     public int getID (int _menuID) {
         return menuID;
     }
-    /*public void setQuantity(int _qty) {
-        this.quantity = _qty;
-    }*/
-    /*public int getQuantity() {
-        Scanner input = new Scanner(System.in);
-        quantity = input.nextInt();
-        return quantity;*/
-
-
-
 
     // METHODS -------------------------------------------------------------------------------------------------------
 
@@ -83,19 +73,9 @@ public class Order {
     }
 
     // GET SUBTOTAL
-
     public double getSubTotal(double _price) { //double quantity) {
         double subTotal = _price; //* quantity;
         totalPrice += subTotal;
         return subTotal;
     }
-
-
-
-
-
-
-
-
-
 }
