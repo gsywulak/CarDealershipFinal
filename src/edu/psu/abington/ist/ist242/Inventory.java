@@ -1,6 +1,6 @@
 /*
-Project: car dealership
-Purpose Details:
+Project: Lab 9
+Purpose Details: Pizza ordering application
 Course: IST 242
 Author:
 Date Developed:
@@ -14,6 +14,7 @@ import java.util.*;
 
 public class Inventory {
 
+
     //Class Level Variables - Protect the data
     int iCount = 101;
     ArrayList<Inventory> invList;
@@ -24,6 +25,7 @@ public class Inventory {
     public String year;
     public String make;
     public String model;
+
 
 
     //Constructor Method
@@ -39,6 +41,8 @@ public class Inventory {
     public Inventory() {
 
     }
+
+
     // SETTERS AND GETTERS --------------------------------------------------------------------------------------------------------------------------------------------------------------
     public int getCarID() {
         return carID;
@@ -149,14 +153,39 @@ public class Inventory {
 
     public static void removeCar(ArrayList<Inventory> invList) {
         Scanner input = new Scanner(System.in);
-        System.out.print("Please enter a Vin number to delete the Car: ");
+        System.out.println("Please enter a Vin number to delete the Car: ");
         String vin = input.nextLine();
 
         for (Inventory inv : invList) {
+            if (vin == inv.getVin()) {
+                invList.remove(vin);
+                break;
+            }
             invList.remove(vin);
             break;
         }
     }
+
+    /*public Inventory removeCar(String vin) {
+
+        //Remove Search string by vehicleId set Color
+        System.out.println("Enter VIN to remove: ");
+        getVin();
+        vin = Exception.testAlphaNumeric(Exception.getInput());
+        setVin(vin);
+        try{
+            for (Inventory v : invList) {
+                if (v.vin.equals(vin)) {
+                    invList.remove(v);
+                    break;
+                }
+            }
+        }catch (java.lang.Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return vin;
+    }*/
 
     @Override
     public String toString() {

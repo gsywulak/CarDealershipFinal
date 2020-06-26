@@ -102,7 +102,7 @@ public class Main {
                     break;
                 case PRINT_CUST:
                     System.out.printf("%-12s | %-20s | %-20s | %-20s\n", "ID", "Name", "Phone Number", "Address");
-                    Customer.printCustomer(cList);
+                    cust.printCustomer(cList);
                     break;
                 case INV_CODE: //Inventory Page
                     Scanner input2 = new Scanner(System.in);
@@ -137,38 +137,38 @@ public class Main {
                         Scanner input = new Scanner(System.in);
                         Inventory.listMenu(invList);
                         System.out.println(" ");
-                        System.out.print("Enter Car ID: ");
+                        System.out.println("Enter Car ID: ");
                         int menuId = input.nextInt();
 
                         oList.add(or.order());
 
                         switch (menuId) {
                             case 101:
-                                subTotal = or.getSubTotal(inv1.getPrice("1")); //subTotal = or.getSubTotal(inv1.getPrice(1), qty);
+                                subTotal = or.getSubTotal(inv1.getPrice("1"));
                                 //System.out.println("$ " + subTotal);
                                 orderTotal += subTotal;
-                                or.printOrder(subTotal, inv1.getPrice("1"), inv1.getMake(), inv1.getModel()); //or.printOrder(subTotal, inv1.getPrice(1), /*qty*/, inv1.getMake());
+                                or.printOrder(subTotal, inv1.getPrice("1"), inv1.getMake(), inv1.getModel());
                                 userAction = getAction(userInput);
                                 break;
                             case 102:
-                                subTotal = or.getSubTotal(inv2.getPrice("2")); //subTotal = or.getSubTotal(inv2.getPrice(2), /*qty*/);
+                                subTotal = or.getSubTotal(inv2.getPrice("2"));
                                 //System.out.println("$ " + subTotal);
                                 orderTotal += subTotal;
-                                or.printOrder(subTotal, inv2.getPrice("2"), inv2.getMake(), inv2.getModel()); //or.printOrder(subTotal, inv2.getPrice(2), /*qty*/, inv2.getMake());
+                                or.printOrder(subTotal, inv2.getPrice("2"), inv2.getMake(), inv2.getModel());
                                 userAction = getAction(userInput);
                                 break;
                             case 103:
-                                subTotal = or.getSubTotal(inv3.getPrice("3")); //subTotal = or.getSubTotal(inv3.getPrice(3), /*qty*/);
+                                subTotal = or.getSubTotal(inv3.getPrice("3"));
                                 //System.out.println("$ " + subTotal);
                                 orderTotal += subTotal;
-                                or.printOrder(subTotal, inv3.getPrice("3"), inv3.getMake(), inv3.getModel()); //or.printOrder(subTotal, inv3.getPrice(3), /*qty*/, inv3.getMake());
+                                or.printOrder(subTotal, inv3.getPrice("3"), inv3.getMake(), inv3.getModel());
                                 userAction = getAction(userInput);
                                 break;
                             case 104:
-                                subTotal = or.getSubTotal(inv4.getPrice("4")); //subTotal = or.getSubTotal(inv4.getPrice(4), /*qty*/);
+                                subTotal = or.getSubTotal(inv4.getPrice("4"));
                                 //System.out.println("$ " + subTotal);
                                 orderTotal += subTotal;
-                                or.printOrder(subTotal, inv4.getPrice("4"), inv4.getMake(), inv4.getModel()); //or.printOrder(subTotal, inv4.getPrice(4), /*qty*/, inv4.getMake());
+                                or.printOrder(subTotal, inv4.getPrice("4"), inv4.getMake(), inv4.getModel());
                                 userAction = getAction(userInput);
                                 break;
                         }

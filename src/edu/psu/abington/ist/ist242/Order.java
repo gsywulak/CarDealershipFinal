@@ -1,13 +1,3 @@
-/*
-Project: Car Dealership
-Purpose Details:
-Course: IST 242
-Team: 4
-Date Developed:
-Last Date Changed:
-Rev: 1
-*/
-
 package edu.psu.abington.ist.ist242;
 
 import java.util.*;
